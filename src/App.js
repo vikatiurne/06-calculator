@@ -62,7 +62,8 @@ function App() {
       setInputNum('');
     } else {
       setResult(math);
-      setInputNum(String(math));
+      // setInputNum(String(math));
+      setInputNum('');
     }
   }
 
