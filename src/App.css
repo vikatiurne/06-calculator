@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+* {
+  font-family: sans-serif;
+}
+h1{
+  margin: 10px;
+}
+form p{
+  font-size: 36px;
+  margin: 15px;
+}
+input,
+button {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+input {
+  display: block;
+  margin: 20px auto;
+}
+button {
+  border: 1px solid gray;
+  background: whitesmoke;
+  margin-right: 5px;
+}
+button:nth-last-child(2),
+button:nth-last-child(1) {
+  background: tomato;
+  color: white;
+}
