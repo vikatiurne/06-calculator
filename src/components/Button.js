@@ -1,4 +1,4 @@
 function Button({button, buttonTitle}){
-    return <button onClick={button}>{buttonTitle}</button>
+    return <button onClick={button} >{buttonTitle}</button>
 }
 export default Button

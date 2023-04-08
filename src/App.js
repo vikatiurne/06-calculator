@@ -11,12 +11,21 @@ function App() {
 
   // функция изменения состояния input
   function handlerInput(e) {
-    setInputNum(String(e.target.value));
+    let currentSymbol = String(e.target.value);
+    if (
+      currentSymbol.match(/[-+*/]/g) === null ||
+      currentSymbol.match(/[-+*/]/g).length <= 1
+    ) {
+      setInputNum(String(currentSymbol));
+    }
   }
-  console.log(inputNum);
+
+  // функция обработки событий клавиатуры: если введено =, то показываем результат
+  function handlerEvenKey(e) {
+    if (e.keyCode === 187 && e.shiftKey === false) getResult(e, inputNum);
+  }
 
   // Функция проверяет последний введенный символ и если это математический оператор, не позволяет ввести еще один оператор (делает замену)
-
   function fillInput(symbol) {
     const lastSymbol = +inputNum[inputNum.length - 1];
     if (isNaN(lastSymbol)) {
@@ -48,8 +57,13 @@ function App() {
       default:
         math = 0;
     }
-    setResult(math);
-    setInputNum(String(math));
+    if (math === Infinity) {
+      setResult("Can't divide by 0");
+      setInputNum('');
+    } else {
+      setResult(math);
+      setInputNum(String(math));
+    }
   }
 
   // функция преобразует строку из input в массив с двумя числами и по индексу определяет математический оператор. Передает эти данные в функцию doMath, где вычисляется результат выражения
@@ -74,10 +88,7 @@ function App() {
 
   function minus(e) {
     e.preventDefault();
-    if (
-      inputNum.match(/[-+*/]/g) === null ||
-      inputNum.match(/[-+*/]/g).length <= 0
-    ) {
+    if (inputNum.match(/[-+*/]/g) === null || inputNum.test(/[-+*/]/)) {
       fillInput('-');
     }
   }
@@ -122,6 +133,7 @@ function App() {
         <input
           value={inputNum}
           onChange={handlerInput}
+          onKeyDown={handlerEvenKey}
           placeholder="Type a number"
         />
 
