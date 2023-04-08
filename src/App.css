@@ -4,12 +4,13 @@
 * {
   font-family: sans-serif;
 }
-h1{
+h1 {
   margin: 10px;
 }
-form p{
+form p {
   font-size: 36px;
   margin: 15px;
+  color: gray
 }
 input,
 button {
@@ -21,13 +22,44 @@ input {
   display: block;
   margin: 20px auto;
 }
+.panel{
+  margin: 0 auto 8px;
+  display: grid;
+  max-width: 400px;
+  width: 100%;
+  grid-template-columns: 3fr 1fr;
+  justify-content: center;
+  gap: 8px;
+}
+
+.active{
+ display: grid;
+ grid-template-columns: 100px;
+  gap: 8px;
+}
+.active button{
+  background-color: rgb(243, 243, 162);
+}
+
 button {
   border: 1px solid gray;
   background: whitesmoke;
   margin-right: 5px;
 }
-button:nth-last-child(2),
-button:nth-last-child(1) {
-  background: tomato;
+button:hover{
+  background-color: black;
   color: white;
+}
+.numbers {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  gap: 8px;
+  justify-content: center;
+}
+.numbers button:last-child{
+  width: 204px;
+  background-color: tomato;
+}
+.numbers button:first-child{
+  grid-row: 4;
 }
