@@ -58,7 +58,7 @@ function App() {
         math = 0;
     }
     if (math === Infinity) {
-      setResult("Ah ah ah!!! Don't you know Can't divide by 0");
+      setResult("Can't divide by 0");
       setInputNum('');
     } else {
       setResult(math);
