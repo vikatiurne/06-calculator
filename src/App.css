@@ -2,15 +2,30 @@
   text-align: center;
 }
 * {
+  box-sizing: border-box;
   font-family: sans-serif;
 }
 h1 {
   margin: 10px;
 }
+
+.calculator {
+  background-color: #212121;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 465px;
+  border-radius: 20px;
+}
+
 form p {
+  width: 420px;
+  margin: 0 auto;
   font-size: 36px;
-  margin: 15px;
-  color: gray
+  padding: 15px;
+  background-color: #d1d9d6;
+  /* color: gray; */
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 input,
 button {
@@ -20,9 +35,15 @@ button {
 }
 input {
   display: block;
-  margin: 20px auto;
+  margin: 0 auto 20px;
+  padding: 15px;
+  width: 420px;
+  border: none;
+  border-radius: 0;
+  background-color: white;
+  text-align: end;
 }
-.panel{
+.panel {
   margin: 0 auto 8px;
   display: grid;
   max-width: 400px;
@@ -32,21 +53,22 @@ input {
   gap: 8px;
 }
 
-.active{
- display: grid;
- grid-template-columns: 100px;
+.active {
+  display: grid;
+  grid-template-columns: 100px;
   gap: 8px;
 }
-.active button{
-  background-color: rgb(243, 243, 162);
+.active button {
+  background-color: rgb(137 134 134);
 }
 
 button {
-  border: 1px solid gray;
-  background: whitesmoke;
+  border: 1px solid transparent;
+  background: #cac8c8;
   margin-right: 5px;
 }
-button:hover{
+button:hover {
+  border: 1px solid white;
   background-color: black;
   color: white;
 }
@@ -56,10 +78,18 @@ button:hover{
   gap: 8px;
   justify-content: center;
 }
-.numbers button:last-child{
+.numbers button:last-child {
   width: 204px;
   background-color: tomato;
 }
-.numbers button:first-child{
+.numbers button:last-child:hover {
+  background-color: rgb(254, 70, 37);
+}
+.numbers button:first-child {
   grid-row: 4;
+}
+
+form > button {
+  margin: 8px 8px 0;
+  background-color: rgb(137 134 134);
 }

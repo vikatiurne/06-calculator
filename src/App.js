@@ -11,18 +11,18 @@ function App() {
 
   // функция изменения состояния input
   function handlerInput(e) {
-    let currentSymbol = String(e.target.value);
     if (
-      currentSymbol.match(/[-+*/]/g) === null ||
-      currentSymbol.match(/[-+*/]/g).length <= 1
+      e.target.value.match(/[-+*/]/g) === null ||
+      e.target.value.match(/[-+*/]/g).length <= 1
     ) {
-      setInputNum(String(currentSymbol));
+      setInputNum(e.target.value);
     }
   }
 
   // функция обработки событий клавиатуры: если введено =, то показываем результат
   function handlerEvenKey(e) {
     if (e.keyCode === 187 && e.shiftKey === false) getResult(e, inputNum);
+    console.log(e);
   }
 
   // Функция проверяет последний введенный символ и если это математический оператор, не позволяет ввести еще один оператор (делает замену)
@@ -58,7 +58,7 @@ function App() {
         math = 0;
     }
     if (math === Infinity) {
-      setResult("Can't divide by 0");
+      setResult("Ah ah ah!!! Don't you know Can't divide by 0");
       setInputNum('');
     } else {
       setResult(math);
@@ -72,7 +72,6 @@ function App() {
     e.preventDefault();
     const index = input.search(/[-+*/]/);
     let nums = input.split(/[-+*/]/);
-    // console.log(nums[0], input[index], nums[1]);
     doMath(nums[0], input[index], nums[1]);
   }
 
@@ -129,39 +128,41 @@ function App() {
       <div>
         <h1>Simplest Working Calculator</h1>
       </div>
-      <form>
-        <p>{result}</p>
-        <input
-          value={inputNum}
-          onChange={handlerInput}
-          onKeyDown={handlerEvenKey}
-          placeholder="Type a number"
-        />
+      <div className="calculator">
+        <form>
+          <p>{result}</p>
+          <input
+            value={inputNum}
+            onChange={handlerInput}
+            onKeyDown={handlerEvenKey}
+            placeholder="Type a number"
+          />
 
-        <div className="panel">
-          <div className="numbers">
-            {numbers.map((num, i) => (
-              <Button
-                key={i}
-                buttonTitle={num}
-                button={(e) => {
-                  e.preventDefault();
-                  setInputNum(String(inputNum) + String(num));
-                }}
-              />
-            ))}
-            <Button buttonTitle="=" button={(e) => getResult(e, inputNum)} />
+          <div className="panel">
+            <div className="numbers">
+              {numbers.map((num, i) => (
+                <Button
+                  key={i}
+                  buttonTitle={num}
+                  button={(e) => {
+                    e.preventDefault();
+                    setInputNum(String(inputNum) + String(num));
+                  }}
+                />
+              ))}
+              <Button buttonTitle="=" button={(e) => getResult(e, inputNum)} />
+            </div>
+            <div className="active">
+              <Button button={plus} buttonTitle="+" />
+              <Button button={minus} buttonTitle="-" />
+              <Button button={times} buttonTitle="&#215;" />
+              <Button button={divide} buttonTitle="&#247;" />
+            </div>
           </div>
-          <div className="active">
-            <Button button={plus} buttonTitle="+" />
-            <Button button={minus} buttonTitle="-" />
-            <Button button={times} buttonTitle="&#215;" />
-            <Button button={divide} buttonTitle="&#247;" />
-          </div>
-        </div>
-        <Button button={resetInput} buttonTitle="reset input" />
-        <Button button={resetResult} buttonTitle="reset result" />
-      </form>
+          <Button button={resetInput} buttonTitle="reset input" />
+          <Button button={resetResult} buttonTitle="reset result" />
+        </form>
+      </div>
     </div>
   );
 }
