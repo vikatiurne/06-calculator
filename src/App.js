@@ -125,9 +125,9 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      {/* <div>
         <h1>Simplest Working Calculator</h1>
-      </div>
+      </div> */}
       <div className="calculator">
         <form>
           <p>{result}</p>

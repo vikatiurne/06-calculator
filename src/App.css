@@ -5,25 +5,26 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
-h1 {
+/* h1 {
   margin: 10px;
-}
+} */
 
 .calculator {
   background-color: #212121;
-  margin: 0 auto;
+  margin: 20px auto 0;
   padding: 20px;
   max-width: 465px;
+  width: 100%;
   border-radius: 20px;
 }
 
 form p {
-  width: 420px;
+  max-width: 420px;
+  width: 100%;
   margin: 0 auto;
   font-size: 36px;
   padding: 15px;
   background-color: #d1d9d6;
-  /* color: gray; */
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
 }
@@ -37,26 +38,27 @@ input {
   display: block;
   margin: 0 auto 20px;
   padding: 15px;
-  width: 420px;
+  max-width: 420px;
+  width: 100%;
   border: none;
   border-radius: 0;
   background-color: white;
   text-align: end;
 }
 .panel {
-  margin: 0 auto 8px;
+  margin: 0 auto 0.3em;
   display: grid;
   max-width: 400px;
   width: 100%;
   grid-template-columns: 3fr 1fr;
   justify-content: center;
-  gap: 8px;
+  gap: 0.3em;
 }
 
 .active {
   display: grid;
-  grid-template-columns: 100px;
-  gap: 8px;
+  grid-template-columns: 1fr;
+  gap: 0.3em;
 }
 .active button {
   background-color: rgb(137 134 134);
@@ -65,7 +67,7 @@ input {
 button {
   border: 1px solid transparent;
   background: #cac8c8;
-  margin-right: 5px;
+  margin-right: 0.1em;
 }
 button:hover {
   border: 1px solid white;
@@ -74,12 +76,12 @@ button:hover {
 }
 .numbers {
   display: grid;
-  grid-template-columns: 100px 100px 100px;
-  gap: 8px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.3em;
   justify-content: center;
 }
 .numbers button:last-child {
-  width: 204px;
+  grid-column: 2/span 2;
   background-color: tomato;
 }
 .numbers button:last-child:hover {
@@ -90,6 +92,6 @@ button:hover {
 }
 
 form > button {
-  margin: 8px 8px 0;
+  margin: 0.3em 0.3em 0;
   background-color: rgb(137 134 134);
 }
